@@ -1,0 +1,18 @@
+version: '3.5'
+
+volumes:
+ docker-api:
+
+services:
+  db-docker-api:
+    image: postgres:alpine
+    ports:
+    - 5432:5432
+    container_name: "docker-api"
+    restart: always
+    environment:
+    - POSTGRES_USER=pguser
+    - POSTGRES_PASSWORD=123456
+    - POSTGRES_DB=docker-api
+    volumes:
+     - ./docker-api:/var/lib/postgres/data
